@@ -20,7 +20,7 @@ namespace :worker do
 
 
       ch=conn.create_channel
-      exchange=ch.fanout("log", :durable => true)
+      exchange=ch.fanout(RABBITMQ_CONFIG[:log_exchange_name], :durable => true)
       queue=ch.queue("#{RABBITMQ_CONFIG[:application_id]}_queue", :durable => true)
 
       queue.bind exchange
