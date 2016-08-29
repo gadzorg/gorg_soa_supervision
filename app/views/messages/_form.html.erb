@@ -1,0 +1,47 @@
+<%= form_for(message) do |f| %>
+  <% if message.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(message.errors.count, "error") %> prohibited this message from being saved:</h2>
+
+      <ul>
+      <% message.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :raw_content %>
+    <%= f.text_field :raw_content %>
+  </div>
+
+  <div class="field">
+    <%= f.label :uuid %>
+    <%= f.text_field :uuid %>
+  </div>
+
+  <div class="field">
+    <%= f.label :event_name %>
+    <%= f.text_field :event_name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :published_at %>
+    <%= f.datetime_select :published_at %>
+  </div>
+
+  <div class="field">
+    <%= f.label :sender_id %>
+    <%= f.text_field :sender_id %>
+  </div>
+
+  <div class="field">
+    <%= f.label :data %>
+    <%= f.text_field :data %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

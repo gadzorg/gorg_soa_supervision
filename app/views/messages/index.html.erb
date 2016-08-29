@@ -1,0 +1,26 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Messages</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Uuid</th>
+      <th>Event name</th>
+      <th>Published at</th>
+      <th>Sender</th>
+      <th>Data</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody id="messages_list">
+    <% @messages.each do |m| %>
+      <%= render partial: "messages/message_row", locals: {message: m} %>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Message', new_message_path %>

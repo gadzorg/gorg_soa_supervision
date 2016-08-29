@@ -13,3 +13,20 @@
  *= require_tree .
  *= require_self
  */
+
+#messages_list tr{
+  -webkit-transition: background-color 500ms ease-out;
+  -moz-transition: background-color 500ms ease-out;
+  -o-transition: background-color 500ms ease-out;
+  transition: background-color 500ms ease-out;
+}
+
+#messages_list tr.new{
+  -webkit-transition: background-color 10ms ease-out;
+  -moz-transition: background-color 10ms ease-out;
+  -o-transition: background-color 10ms ease-out ;
+  transition: background-color 10ms ease-out;
+  background-color: #ffff66
+}
+
+

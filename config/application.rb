@@ -21,5 +21,12 @@ module GorgSoaSupervisionRails5
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
+
+    config.autoload_paths << "#{Rails.root}/app"
+
   end
 end
+
+require File.expand_path('config/extra_config.rb',Rails.root)
+
+RABBITMQ_CONFIG=ExtraConfig.new(File.expand_path("config/rabbitmq.yml",Rails.root),"RABBITMQ")

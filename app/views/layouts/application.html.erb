@@ -9,6 +9,9 @@
   </head>
 
   <body>
+    <%- if current_user %>
+      <p>Connecté en tant que <%= current_user.email%> - <%= link_to('Deconnexion', destroy_user_session_path, :method => :delete) %>  <p>
+    <%- end %>
     <%= yield %>
   </body>
 </html>
