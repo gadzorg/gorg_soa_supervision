@@ -12,7 +12,6 @@ class MessagesController < ApplicationController
   # GET /messages/1
   # GET /messages/1.json
   def show
-    ActionCable.server.broadcast "rabbitmq_activity_channel" ,message: 'MESSAGE_HTML'
   end
 
   # GET /messages/new
