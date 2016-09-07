@@ -6,29 +6,9 @@
 </p>
 
 <p>
-  <strong>Uuid:</strong>
-  <%= @message.uuid %>
+  <strong>Created at:</strong>
+  <%= @message.created_at %>
 </p>
 
-<p>
-  <strong>Event name:</strong>
-  <%= @message.event_name %>
-</p>
 
-<p>
-  <strong>Published at:</strong>
-  <%= @message.published_at %>
-</p>
-
-<p>
-  <strong>Sender:</strong>
-  <%= @message.sender_id %>
-</p>
-
-<p>
-  <strong>Data:</strong>
-  <%= @message.data %>
-</p>
-
-<%= link_to 'Edit', edit_message_path(@message) %> |
 <%= link_to 'Back', messages_path %>

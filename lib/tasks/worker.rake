@@ -2,7 +2,7 @@ require 'bunny'
 
 namespace :worker do
   desc "TODO"
-  task run: :environment do
+  task run: :setup_logger do
     
 
     begin
@@ -26,7 +26,8 @@ namespace :worker do
       queue.bind exchange
 
       queue.subscribe do |delivery_info, _properties, body|
-        puts "Receive message"
+        Rails.logger.info "Receive message"
+        Rails.logger.debug body
         ProcessJsonMessage.new(body)
       end
 
@@ -35,7 +36,7 @@ namespace :worker do
         sleep(1)
       end
     rescue SystemExit, Interrupt => _
-      self.stop
+      conn.close
     end
 
   end

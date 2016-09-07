@@ -29,4 +29,19 @@
   background-color: #ffff66
 }
 
+#event-index{
+  width:95%;
+  margin:auto;
+}
 
+table.error-table {
+  width:100%;
+}
+
+tr.event-row td {
+  border-top: solid;
+}
+
+tr.error-row {
+  background-color: #f3f3f3
+}

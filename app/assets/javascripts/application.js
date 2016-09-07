@@ -13,4 +13,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require cable
+//= require vue
+//= require vue-router
 //= require_tree .

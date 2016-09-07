@@ -10,20 +10,48 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160829101620) do
+ActiveRecord::Schema.define(version: 20160905135311) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "uuid-ossp"
 
-  create_table "messages", force: :cascade do |t|
-    t.string   "raw_content"
-    t.string   "uuid"
+  create_table "event_errors", force: :cascade do |t|
+    t.uuid     "uuid",         default: -> { "uuid_generate_v4()" }, null: false
+    t.string   "error_type"
+    t.string   "sender"
+    t.string   "message"
+    t.datetime "published_at"
+    t.json     "debug_data"
+    t.integer  "event_id"
+    t.datetime "created_at",                                         null: false
+    t.datetime "updated_at",                                         null: false
+    t.index ["event_id"], name: "index_event_errors_on_event_id", using: :btree
+  end
+
+  create_table "event_errors_messages", id: false, force: :cascade do |t|
+    t.integer "event_error_id"
+    t.integer "message_id"
+    t.index ["event_error_id"], name: "index_event_errors_messages_on_event_error_id", using: :btree
+    t.index ["message_id"], name: "index_event_errors_messages_on_message_id", using: :btree
+  end
+
+  create_table "events", force: :cascade do |t|
+    t.uuid     "uuid",         default: -> { "uuid_generate_v4()" }, null: false
     t.string   "event_name"
     t.datetime "published_at"
     t.string   "sender_id"
     t.json     "data"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",                                         null: false
+    t.datetime "updated_at",                                         null: false
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.string   "raw_content"
+    t.integer  "event_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["event_id"], name: "index_messages_on_event_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|

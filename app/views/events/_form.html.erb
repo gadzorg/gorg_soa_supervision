@@ -1,20 +1,15 @@
-<%= form_for(message) do |f| %>
-  <% if message.errors.any? %>
+<%= form_for(event) do |f| %>
+  <% if event.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(message.errors.count, "error") %> prohibited this message from being saved:</h2>
+      <h2><%= pluralize(event.errors.count, "error") %> prohibited this event from being saved:</h2>
 
       <ul>
-      <% message.errors.full_messages.each do |message| %>
+      <% event.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :raw_content %>
-    <%= f.text_field :raw_content %>
-  </div>
 
   <div class="field">
     <%= f.label :uuid %>
@@ -39,6 +34,11 @@
   <div class="field">
     <%= f.label :data %>
     <%= f.text_field :data %>
+  </div>
+
+  <div class="field">
+    <%= f.label :created_at %>
+    <%= f.datetime_select :created_at %>
   </div>
 
   <div class="actions">

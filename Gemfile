@@ -34,6 +34,7 @@ gem "twitter-bootstrap-rails"
 gem "bunny"
 gem 'devise'
 gem 'redis'
+gem 'vuejs-rails'
 
 group :production do
   #HEROKU

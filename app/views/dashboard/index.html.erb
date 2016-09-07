@@ -1,0 +1,95 @@
+
+<script type="text/x-template" id="error-row">
+  <tr class="error-row">
+    <td>
+      <table>
+       <tr>
+          <td>UUID</td>
+          <td>{{error.uuid}}</td>
+        </tr>
+        <tr>
+          <td>Type</td>
+          <td>{{error.error_type}}</td>
+        </tr>
+        <tr>
+          <td>Message</td>
+          <td>{{error.message}}</td>
+        </tr>
+        <tr>
+          <td>Sender</td>
+          <td>{{error.sender}}</td>
+        </tr>
+        <tr>
+          <td>Debug</td>
+          <td>{{debug_data_string}}</td>
+        </tr>
+        <tr>
+          <td>Published at</td>
+          <td>{{error.published_at}}</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</script>
+
+
+<script type="text/x-template" id="event-row">
+  <tr class="event-row" v-on:click="toggle_details_display()">
+    <td>
+      {{event.published_at}}
+    </td>
+    <td>
+      {{event.uuid}}
+    </td>
+    <td>
+      {{event.event_name}}
+    </td>
+    <td >
+      {{event.event_errors.length}}
+    </td>
+  </tr>
+  <tr v-if="display_details" class="event-data" v-on:click="toggle_details_display()">
+    <th>Data</th>
+    <td>{{data_string}}</td>
+  </tr>
+  <tr v-if="display_details" v-on:click="toggle_details_display()"> 
+    <td colspan=4>
+      <table class="error-table">
+        <tr is="error-row"
+        v-for="error in event.event_errors"
+        :error="error"
+        track-by="uuid">
+      </table>
+    </td>
+  </tr>
+</script>
+
+<script type="text/x-template" id="event-list">
+  <div >
+    <h1>Event index</h1>
+    <table id="event-index">
+      <thead>
+        <tr>
+          <th>Published_at</th>
+          <th>UUID</th>
+          <th>Name</th>
+          <th>Error Count</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          is="event-row"
+          v-for="event in events"
+          :event="event"
+          track-by="uuid">
+        </tr>
+      </tbody>
+    </table>
+  <div>
+</script>
+
+<div id="dashboard-app">
+  <event-list 
+    :events="events|orderBy 'updated_at' -1">    
+  </event-list>
+</div>
