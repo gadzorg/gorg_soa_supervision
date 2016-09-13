@@ -90,6 +90,6 @@
 
 <div id="dashboard-app">
   <event-list 
-    :events="events|orderBy 'updated_at' -1">    
+    :events="events|orderBy 'updated_at' -1 | limitBy 200">    
   </event-list>
 </div>

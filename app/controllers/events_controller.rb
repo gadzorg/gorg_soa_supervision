@@ -4,7 +4,7 @@ class EventsController < ApplicationController
   # GET /events
   # GET /events.json
   def index
-    @events = Event.all.limit(200).includes(:event_errors).order(uuid: :desc)
+    @events = Event.all.limit(200).includes(:event_errors).order(updated_at: :desc)
   end
 
   # GET /events/1
