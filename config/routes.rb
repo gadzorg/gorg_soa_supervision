@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  post 'message_sender/send_message'
+
   get 'dashboard/index'
 
   devise_for :users

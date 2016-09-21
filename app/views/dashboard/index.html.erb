@@ -1,3 +1,19 @@
+<script type="text/x-template" id="message-sender-tool">
+  <div id="message-sender">
+    <h2>Custom message sender</h2>
+    <form action="<%=message_sender_send_message_path%>" method="post" id="message-sender-form">
+      <input type="text" name="message[routing_key]" v-model="routing_key" placeholder="Routing Key ...">
+      <input type="text" name="message[sender]" v-model="sender" placeholder="Sender ...">
+      <input type="submit" name="commit" value="Envoyer" class="box button main-button">
+      <br/>
+      <textarea  name="message[data]" rows="4" cols="50" v-model="data" placeholder="{data}"></textarea>
+    </form>
+    <div v-if="response">
+      Response: {{response}}
+    </div>
+  </div>
+</script>
+
 
 <script type="text/x-template" id="error-row">
   <tr class="error-row">
@@ -89,6 +105,9 @@
 </script>
 
 <div id="dashboard-app">
+
+  <message-sender-tool></message-sender-tool>
+
   <event-list 
     :events="events|orderBy 'updated_at' -1 | limitBy 200">    
   </event-list>

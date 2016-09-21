@@ -35,6 +35,7 @@ gem "bunny"
 gem 'devise'
 gem 'redis'
 gem 'vuejs-rails'
+gem 'gorg_message_sender', '~> 1.4'
 
 group :production do
   #HEROKU
