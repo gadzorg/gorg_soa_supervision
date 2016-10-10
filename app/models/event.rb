@@ -2,8 +2,8 @@ class Event < ApplicationRecord
 
   class DefinitionConflict < StandardError; end
 
-  has_many :messages
-  has_many :event_errors
+  has_many :messages, dependent: :destroy
+  has_many :event_errors, dependent: :destroy
 
   def self.verify_or_create(h)
     if event=self.find_by(uuid: h[:uuid])
