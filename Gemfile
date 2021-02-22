@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 ruby File.read(".ruby-version").strip
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '6.0.3.5'
+gem 'rails', '6.1.3'
 gem 'bootsnap', require: false
 # Use postgresql as the database for Active Record
 gem 'pg'
