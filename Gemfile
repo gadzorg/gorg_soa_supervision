@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 ruby File.read(".ruby-version").strip
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.2.4.5'
+gem 'rails', '6.0.3.5'
 gem 'bootsnap', require: false
 # Use postgresql as the database for Active Record
 gem 'pg'
@@ -31,7 +31,7 @@ gem 'jbuilder'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-gem "twitter-bootstrap-rails"
+gem "twitter-bootstrap-rails", git: 'git://github.com/seyhunak/twitter-bootstrap-rails.git' # rails 6 support on master
 gem "bunny"
 gem 'devise'
 gem 'redis'
