@@ -207,7 +207,7 @@ GEM
       thread_safe (~> 0.1)
     uglifier (4.2.0)
       execjs (>= 0.3.0, < 3)
-    vuejs-rails (1.0.24)
+    vuejs-rails (1.0.26)
     warden (1.2.9)
       rack (>= 2.0.9)
     web-console (3.3.1)
@@ -246,7 +246,7 @@ DEPENDENCIES
   twitter-bootstrap-rails
   tzinfo-data
   uglifier
-  vuejs-rails
+  vuejs-rails (< 2)
   web-console
 
 RUBY VERSION

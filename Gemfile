@@ -34,7 +34,7 @@ gem "twitter-bootstrap-rails"
 gem "bunny"
 gem 'devise'
 gem 'redis'
-gem 'vuejs-rails'
+gem 'vuejs-rails', "< 2"
 gem 'gorg_message_sender'
 
 group :production do
