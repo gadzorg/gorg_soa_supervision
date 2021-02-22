@@ -1,10 +1,4 @@
 GIT
-  remote: git://github.com/alexpeattie/heroku_secrets.git
-  revision: 717af8e0acf399bc88d2c8c1a7e230023942af0f
-  specs:
-    heroku_secrets (0.0.2)
-
-GIT
   remote: git://github.com/seyhunak/twitter-bootstrap-rails.git
   revision: a9a5b41735cdb37e0dcb878eb25dcdf6174412cd
   specs:
@@ -13,6 +7,12 @@ GIT
       execjs (~> 2.7)
       less-rails (>= 3.0, < 5.0)
       railties (>= 5.0, < 7.0)
+
+GIT
+  remote: https://github.com/alexpeattie/heroku_secrets.git
+  revision: 717af8e0acf399bc88d2c8c1a7e230023942af0f
+  specs:
+    heroku_secrets (0.0.2)
 
 GEM
   remote: https://rubygems.org/
@@ -287,7 +287,7 @@ DEPENDENCIES
   web-console
 
 RUBY VERSION
-   ruby 2.6.6p146
+   ruby 2.7.2p137
 
 BUNDLED WITH
-   1.17.3
+   2.2.11
