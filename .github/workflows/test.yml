@@ -48,6 +48,9 @@ jobs:
         if: steps.cache-bundle.outputs.cache-hit != 'true'
         run: bundle _1.17.3_ install --jobs 4 --retry 3
 
+      - run: cp -v config/database.yml.template config/database.yml
+      - run: bundle exec rails db:migrate
+
       - name: Test
         run: bundle _1.17.3_ exec rspec
 
