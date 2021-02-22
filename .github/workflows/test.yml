@@ -1,0 +1,53 @@
+name: Tests
+
+on: [push, pull_request]
+
+jobs:
+  test:
+    runs-on: ubuntu-20.04
+    services:
+      rabbitmq:
+        image: rabbitmq:latest
+        # needed because the rabbitmq container does not provide a healthcheck
+        options: --health-cmd "rabbitmqctl node_health_check" --health-interval 10s --health-timeout 5s --health-retries 5
+        env:
+          RABBITMQ_DEFAULT_USER: guest
+          RABBITMQ_DEFAULT_PASS: guest
+          RABBITMQ_DEFAULT_VHOST: "/"
+        ports:
+          - 5672:5672
+
+    steps:
+      - uses: actions/checkout@v1
+      # don't use official github ruby, since is not uptodate with last rubies
+      # https://github.com/eregon/use-ruby-action
+      - uses: eregon/use-ruby-action@v1
+        with:
+          ruby-version: .ruby-version
+
+      - run: |
+          gem install bundler -v 1.17.3
+          gem update --system
+
+      - run: ruby -v
+      - run: printenv | sort
+
+      - uses: actions/cache@v1
+        id: cache-bundle
+        with:
+          path: .cache/bundle
+          key: bundle-use-ruby--${{ hashFiles('.ruby-version') }}-${{ hashFiles('**/Gemfile.lock') }}
+          restore-keys: |
+            bundle-use-ruby--${{ hashFiles('.ruby-version') }}-
+
+      - name: Bundle config
+        run: |
+          bundle _1.17.3_ config path .cache/bundle
+
+      - name: Bundle install
+        if: steps.cache-bundle.outputs.cache-hit != 'true'
+        run: bundle _1.17.3_ install --jobs 4 --retry 3
+
+      - name: Test
+        run: bundle _1.17.3_ exec rspec
+
