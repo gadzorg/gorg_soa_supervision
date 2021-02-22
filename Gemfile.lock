@@ -65,11 +65,11 @@ GEM
     diff-lcs (1.2.5)
     erubis (2.7.0)
     execjs (2.7.0)
-    factory_girl (4.7.0)
-      activesupport (>= 3.0.0)
-    factory_girl_rails (4.7.0)
-      factory_girl (~> 4.7.0)
-      railties (>= 3.0.0)
+    factory_bot (5.2.0)
+      activesupport (>= 4.2.0)
+    factory_bot_rails (5.2.0)
+      factory_bot (~> 5.2.0)
+      railties (>= 4.2.0)
     faker (1.6.6)
       i18n (~> 0.5)
     ffi (1.11.3)
@@ -222,7 +222,7 @@ DEPENDENCIES
   bunny
   byebug
   devise
-  factory_girl_rails
+  factory_bot_rails
   faker
   gorg_message_sender
   heroku_secrets!
@@ -245,5 +245,8 @@ DEPENDENCIES
   vuejs-rails
   web-console
 
+RUBY VERSION
+   ruby 2.4.10p364
+
 BUNDLED WITH
-   1.12.5
+   1.17.3
