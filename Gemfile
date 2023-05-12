@@ -31,7 +31,7 @@ gem 'jbuilder'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-gem "twitter-bootstrap-rails", git: 'git://github.com/seyhunak/twitter-bootstrap-rails.git' # rails 6 support on master
+gem "twitter-bootstrap-rails", github: 'seyhunak/twitter-bootstrap-rails' # rails 6 support on master
 gem "bunny"
 gem 'devise'
 gem 'redis'
